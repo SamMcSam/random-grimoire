@@ -1,23 +1,25 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-/*
-type CounterState = {
-  value: number;
-};
+export interface Recipe {
+    key: string;
+    ingredients: string[];
+    name: string;
+    count: number;
+}
+const initialState: { [key: string]: Recipe } = {};
 
-const initialState = {
-  value: 0,
-} as CounterState;
-*/
-
-export const ingredientsSlice = createSlice({
-    name: "ingredients",
-    initialState: 0,
+export const recipesSlice = createSlice({
+    name: "recipes",
+    initialState,
     reducers: {
-        addIngredient: (state, action: PayloadAction<number>) =>
-            state + action.payload,
+        addRecipe: (state, action: PayloadAction<Recipe>) => {
+            if (!state.hasOwnProperty(action.payload.key)) {
+                state[action.payload.key] = action.payload;
+            }
+            state[action.payload.key].count += 1;
+        },
     },
 });
 
-export const { addIngredient } = ingredientsSlice.actions;
-export default ingredientsSlice.reducer;
+export const { addRecipe } = recipesSlice.actions;
+export default recipesSlice.reducer;

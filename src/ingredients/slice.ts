@@ -8,7 +8,9 @@ export interface Ingredients {
     timer: number;
 }
 const initialState: Ingredients = {
-    currentIngredients: ingredientIcons.slice(0, 5),
+    currentIngredients: ingredientIcons
+        .sort((a, b) => 0.5 - Math.random())
+        .slice(0, 5),
     timer: TIMER_START,
 };
 
