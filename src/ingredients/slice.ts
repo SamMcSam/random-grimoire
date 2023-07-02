@@ -18,7 +18,7 @@ export const ingredientsSlice = createSlice({
     name: "ingredients",
     initialState,
     reducers: {
-        NewIngredient: (state, action) => {
+        newIngredient: (state, action) => {
             state.currentIngredients.pop();
             state.currentIngredients.unshift(action.payload);
             return state;
@@ -26,5 +26,5 @@ export const ingredientsSlice = createSlice({
     },
 });
 
-export const { NewIngredient } = ingredientsSlice.actions;
+export const { newIngredient } = ingredientsSlice.actions;
 export default ingredientsSlice.reducer;

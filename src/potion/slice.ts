@@ -15,8 +15,10 @@ export const potionsSlice = createSlice({
                 state.splice(index, 1);
             }
         },
+        resetPotion: (state) => [],
     },
 });
 
-export const { addIngredient, removeIngredient } = potionsSlice.actions;
+export const { addIngredient, removeIngredient, resetPotion } =
+    potionsSlice.actions;
 export default potionsSlice.reducer;
